@@ -2,7 +2,7 @@
 
 ## Result
 
-The selected Pangu/Mir launcher was displayed as a native Linux RemoteApp window using upstream WinApps and the patched-QEMU Windows container. Its server list loaded. No account registration, recharge, login or in-game test was performed. This does not establish compatibility with other launchers, kernel anti-cheat or future server updates.
+The selected Pangu/Mir launcher was displayed as a native Linux RemoteApp window using upstream WinApps and the patched-QEMU Windows container. Its server list loaded. After the user separately authorized live play and an independent test account on 2026-10-16, registration and login succeeded on the opened 16号03区 [电信] formal server. A warrior named 青云游侠 was created, entered the world, and walked around the spawn area through the VM console. No recharge was performed. Combat and prolonged stability have not been verified. The in-game test used the VM console; RemoteApp validation covers the launcher. This does not establish compatibility with other launchers, kernel anti-cheat or future server updates.
 
 ## Provenance
 

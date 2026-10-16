@@ -46,3 +46,7 @@ mir-launcher          # Launcher through RemoteApp
 The client remains the upstream WinApps script; desktop entries select a specific executable rather than scanning the whole host home folder. Existing WinApps configuration is backed up by the helper.
 
 WinApps registry files are copied from winapps-org/winapps under its MIT license (see WINAPPS-LICENSE.md).
+
+## Recovery
+
+For reinstall/offline recovery, read [RECOVERY.md](RECOVERY.md). Encrypted backups include private credentials; never commit backup files or recovery keys.
