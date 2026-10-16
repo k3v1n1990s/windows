@@ -35,7 +35,7 @@ Use only a dedicated file redirection folder in RDP_FLAGS; omit +home-drive. A f
 
 Check patched QEMU version and binary SHA-256, actual QEMU process arguments, successful Windows boot, RDP authentication, then the launcher window and screenshot. A running container alone is not success. Separate launcher-visible, server-list-loaded and in-game statuses. No login account, purchases or recharge are required for the launcher test.
 
-Configure the local client (requires FreeRDP 3, `dialog`, and `openbsd-netcat`):
+Configure the local client after Windows completes first login (requires FreeRDP 3, `dialog`, and `openbsd-netcat`). The OEM helper resolves installers that relocate themselves and writes `runtime/shared/evidence/launcher-target.txt`; the client helper reads that path. An explicit `--launcher-path` overrides it:
 
 ```sh
 python3 integration/scripts/configure-client.py --winapps ../winapps --runtime ../runtime
