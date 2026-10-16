@@ -25,4 +25,4 @@ GitHub 為公開程式碼備援，不保存密碼或磁碟。雲端備份和金�
 
 ## 後續備份
 
-正常停止容器，確認狀態為 exited，再匯出映像和 Git bundles 至 recovery/staging，執行 integration/scripts/backup.sh。該腳本會更新本機固定檔名，先封存前次備份或使用新日期目錄。雲端採用版本目錄，不覆蓋歷史備份。加密上傳後以 rclone check --download 驗證，再在獨立本機目錄解密、檢查並開機驗收。
+正常停止容器，確認狀態為 exited，再匯出映像至 recovery/staging/image.tar。兩個 Git checkout 必須是完整倉庫（淺層倉庫先 fetch --unshallow）；備份腳本會自動生成離線 Git bundles，執行 integration/scripts/backup.sh。該腳本會更新本機固定檔名，先封存前次備份或使用新日期目錄。雲端採用版本目錄，不覆蓋歷史備份。加密上傳後以 rclone check --download 驗證，再在獨立本機目錄解密、檢查並開機驗收。

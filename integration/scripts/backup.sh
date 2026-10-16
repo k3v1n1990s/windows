@@ -10,7 +10,10 @@ mkdir -p "$stage/private" "$out"
 [[ -f "$key" ]] || python3 -c 'import secrets; print(secrets.token_urlsafe(48))' > "$key"
 chmod 600 "$key"
 [[ -f "$stage/image.tar" ]] || { echo 'Export Docker image to recovery/staging/image.tar first'; exit 1; }
-[[ -f "$stage/windows.bundle" && -f "$stage/winapps.bundle" ]] || { echo 'Create offline Git bundles first'; exit 1; }
+for repo in windows winapps; do
+ [[ $(git -C "$base/$repo" rev-parse --is-shallow-repository) == false ]] || { echo "Unshallow $repo before offline backup"; exit 1; }
+ git -C "$base/$repo" bundle create "$stage/$repo.bundle" --all
+ done
 cp "$base/windows/integration/.env" "$stage/private/windows.env"
 cp "$HOME/.config/winapps/mir-game-account.json" "$stage/private/game-account.json"
 docker_cmd=(docker)
