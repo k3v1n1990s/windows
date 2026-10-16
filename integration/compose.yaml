@@ -17,6 +17,10 @@ services:
       GPU: "N"
       DISK_TYPE: "sata"
       ADAPTER: "e1000"
+      VM: "N"
+      HV: "N"
+      VMX: "N"
+      CPU_FLAGS: "hypervisor=off,kvm=off"
       QGA: "unix:/run/qga.sock,server=on,wait=off"
     ports:
       - "127.0.0.1:8006:8006"
