@@ -1,0 +1,34 @@
+name: winapps-mir
+services:
+  windows:
+    image: local/windows-zhaodice:10.2.2
+    container_name: WinApps-Mir
+    environment:
+      VERSION: "10"
+      RAM_SIZE: "6G"
+      CPU_CORES: "4"
+      DISK_SIZE: "80G"
+      USERNAME: "Agent"
+      PASSWORD: "${WINDOWS_PASSWORD:?Set WINDOWS_PASSWORD in .env}"
+      LANGUAGE: "Chinese"
+      REGION: "zh-CN"
+      KEYBOARD: "en-US"
+      VGA: "std"
+      GPU: "N"
+      DISK_TYPE: "sata"
+      ADAPTER: "e1000"
+      QGA: "unix:/run/qga.sock,server=on,wait=off"
+    ports:
+      - "127.0.0.1:8006:8006"
+      - "127.0.0.1:3389:3389/tcp"
+      - "127.0.0.1:3389:3389/udp"
+    devices:
+      - /dev/kvm
+      - /dev/net/tun
+    cap_add: [NET_ADMIN, NET_RAW]
+    volumes:
+      - ../../runtime/storage:/storage
+      - ../../runtime/shared:/shared
+      - ./oem:/oem:ro
+    stop_grace_period: 120s
+    restart: "no"
